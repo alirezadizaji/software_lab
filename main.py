@@ -10,7 +10,7 @@ def div(a, b):
     return a // b
 
 def power(a, b):
-    while b:
+    while b == 0:
         b -= 1
         a *= a
     return a
