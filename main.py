@@ -26,4 +26,4 @@ def min(a, b):
 	return b
 
 def exponential(a):
-	return exp(a)	
+	return math.exp(a)
