@@ -10,10 +10,10 @@ def div(a, b):
     return a // b
 
 def power(a, b):
-    while (True):
-		b -= 1
-		a *= a
-	return a
+    while b:
+        b -= 1
+        a *= a
+    return a
 
 def minus(a, b):
 	return a - b
