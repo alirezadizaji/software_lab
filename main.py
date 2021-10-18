@@ -13,8 +13,7 @@ def power(a, b):
 def minus(a, b):
 	return a - b
 
-def max(a,b):
+def max(a, b):
 	if a > b:
 		return a
 	return b
-
