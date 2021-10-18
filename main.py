@@ -1,3 +1,5 @@
+import math
+
 def sum(a, b):
     return a + b
 
@@ -22,3 +24,6 @@ def min(a, b):
 	if a < b:
 		return a
 	return b
+
+def exponential(a):
+	return exp(a)	
