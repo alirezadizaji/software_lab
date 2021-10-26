@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 public class MyStepdefs2 {
     private Calculator calculator;
-    private int input;
+    private float input;
     private String opt;
     private float result;
 
@@ -18,7 +18,7 @@ public class MyStepdefs2 {
     }
 
     @Given("^one input and opt, (-?\\d+[.]?\\d*) and (sqr|rvs)$")
-    public void twoInputValuesAnd(int arg0, String arg1) {
+    public void twoInputValuesAnd(float arg0, String arg1) {
         input = arg0;
         this.opt = arg1;
     }
@@ -34,7 +34,7 @@ public class MyStepdefs2 {
 
     @Then("^the result would be (-?\\d+[.]?\\d*)$")
     public void iExpectTheResult(float arg0) {
-        Assert.assertEquals(arg0, result, 0.00001);
+        Assert.assertEquals(arg0, result, 0.0001);
 
     }
 }

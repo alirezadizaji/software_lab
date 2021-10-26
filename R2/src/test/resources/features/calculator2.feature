@@ -12,6 +12,9 @@ Feature: Calculator
     Then the result would be <result>
 
     Examples:
-      | input | opt | result |
-      | 4     | rvs | 0.25   |
-      | 4     | sqr | 2      |
+      | input   | opt   | result |
+      | 4       | rvs   | 0.25   |
+      | 4       | sqr   | 2      |
+      | 0.25    | sqr   | 0.5    |
+      | 0.25    | rvs   | 4      |
+      | 0.33333 | rvs   | 3      |

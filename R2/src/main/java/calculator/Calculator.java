@@ -6,11 +6,11 @@ public class Calculator {
         return a + b;
     }
 
-    public float reverse(int a) {
+    public float reverse(float a) {
         return (float) 1 / a;
     }
 
-    public float sqrt(int a) {
+    public float sqrt(float a) {
         return (float) Math.sqrt(a);
     }
 }
