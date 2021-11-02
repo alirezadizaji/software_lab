@@ -46,7 +46,7 @@ public class SquareTest {
     public void negativeSquare() throws Exception{
         int edge = -8;
         try {
-            new Sqaure(edge);
+            new Square(edge);
             assertEquals(1,0);
         } catch (Exception e)
         {
