@@ -1,9 +1,14 @@
 package AbstractFactory;
 
-import AbstractFactory.*;
+import AbstractFactory.Creator.GardenCreator;
+import AbstractFactory.Creator.GardenType;
+import AbstractFactory.Flower.FlowerColor;
+import AbstractFactory.Flower.Rose;
+import AbstractFactory.Flower.Sakura;
+import AbstractFactory.Provider.GardenProvider;
+import AbstractFactory.Tree.Chenar;
+import AbstractFactory.Tree.Maple;
 import org.junit.Test;
-
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -12,13 +17,13 @@ public class GardenProviderTest {
     @Test
     public void test_flower_type_iranian() {
         GardenCreator creator = GardenProvider.getGarden(GardenType.IRANIAN);
-        assertTrue(creator.showFlower() instanceof Rose);
+        assertTrue(creator.getFlower() instanceof Rose);
     }
 
     @Test
     public void test_tree_type_iranian() {
         GardenCreator creator = GardenProvider.getGarden(GardenType.IRANIAN);
-        assertTrue(creator.showTree() instanceof Chenar);
+        assertTrue(creator.getTree() instanceof Chenar);
     }
 
     @Test
@@ -27,26 +32,26 @@ public class GardenProviderTest {
 
         creator.growGarden();
 
-        Rose flower = (Rose) creator.showFlower();
-        Chenar tree = (Chenar) creator.showTree();
+        Rose flower = (Rose) creator.getFlower();
+        Chenar tree = (Chenar) creator.getTree();
 
-        assertEquals(flower.petal_number, 7);
-        assertEquals(flower.color, FlowerColor.RED);
-        assertEquals(tree.height, 3);
-        assertEquals(tree.leaf_number, 100);
-        assertEquals(tree.leaf_length, 0.3, 0.000001);
+        assertEquals(flower.getPetalNumber(), 7);
+        assertEquals(flower.getColor(), FlowerColor.RED);
+        assertEquals(tree.getHeight(), 3);
+        assertEquals(tree.getLeafNumber(), 100);
+        assertEquals(tree.getLeafLength(), 0.3, 0.000001);
     }
 
     @Test
     public void test_flower_type_japanese() {
         GardenCreator creator = GardenProvider.getGarden(GardenType.JAPANESE);
-        assertTrue(creator.showFlower() instanceof Sakura);
+        assertTrue(creator.getFlower() instanceof Sakura);
     }
 
     @Test
     public void test_tree_type_japanese() {
         GardenCreator creator = GardenProvider.getGarden(GardenType.JAPANESE);
-        assertTrue(creator.showTree() instanceof Maple);
+        assertTrue(creator.getTree() instanceof Maple);
     }
 
     @Test
@@ -55,14 +60,14 @@ public class GardenProviderTest {
 
         creator.growGarden();
 
-        Sakura flower = (Sakura) creator.showFlower();
-        Maple tree = (Maple) creator.showTree();
+        Sakura flower = (Sakura) creator.getFlower();
+        Maple tree = (Maple) creator.getTree();
 
-        assertEquals(flower.petal_number, 5);
-        assertEquals(flower.color, FlowerColor.PINK);
-        assertEquals(tree.height, 4);
-        assertEquals(tree.leaf_number, 50);
-        assertEquals(tree.leaf_length, 0.2, 0.000001);
+        assertEquals(flower.getPetalNumber(), 5);
+        assertEquals(flower.getColor(), FlowerColor.PINK);
+        assertEquals(tree.getHeight(), 4);
+        assertEquals(tree.getLeafNumber(), 50);
+        assertEquals(tree.getLeafLength(), 0.2, 0.000001);
     }
 
 }
