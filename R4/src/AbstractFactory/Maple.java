@@ -10,10 +10,6 @@ public class Maple implements Tree{
     public void grow() {
         this.height = 4;
         this.leaf_number = 50;
-    }
-
-    @Override
-    public void blossom() {
         this.leaf_length = (float) 0.2;
     }
 }

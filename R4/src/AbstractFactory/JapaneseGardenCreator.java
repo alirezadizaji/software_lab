@@ -16,6 +16,12 @@ public class JapaneseGardenCreator implements GardenCreator{
     }
 
     @Override
+    public void growGarden() {
+        tree.grow();
+        flower.growPetal();
+    }
+
+    @Override
     public Tree showTree() {
         return tree;
     }
