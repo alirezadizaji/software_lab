@@ -1,5 +1,6 @@
 package com.unittest.codecoverage.service;
 
+import com.unittest.codecoverage.models.StreetDirectionFlow;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -50,4 +51,23 @@ public class TrafficBehaviorServiceTest {
 		
 	}
 
+	@Test
+	public void testFootpassengerCrossTheStreet_shouldThrowBehaviorExceptionWhenFootpassengerCrossesTheCrossWalkDuringHeavyTrafficWithYellowLightAndDangerousSpeedRangeAndDualFlow() {
+
+		Traffic currentTrafic = new Traffic();
+		currentTrafic.setIntenseCarTraffic(true);
+		currentTrafic.setCurrentTrafficLight(TrafficLigth.YELLOW);
+		currentTrafic.setMaxSpeedAllowed((short) 120);
+		currentTrafic.setMinSpeedAllowed((short) 70);
+		currentTrafic.setStreetDirectionFlow(StreetDirectionFlow.TWO_WAY);
+
+		Footpassenger currentFootpassengerBehavior = new Footpassenger();
+		currentFootpassengerBehavior.setCrossedTheCrosswalk(true);
+		currentFootpassengerBehavior.setCrossedTrafficLigth(TrafficLigth.YELLOW);
+
+		Assertions.assertThatThrownBy(() -> trafficBehaviorService.footpassengerCrossTheStreet(currentTrafic, currentFootpassengerBehavior))
+				.isInstanceOf(BehaviorException.class)
+				.hasMessage("Hey! that's like committing suicide");
+
+	}
 }

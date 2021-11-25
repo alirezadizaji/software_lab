@@ -2,6 +2,7 @@ package com.unittest.codecoverage.services.impl;
 
 import com.unittest.codecoverage.exceptions.BehaviorException;
 import com.unittest.codecoverage.models.Footpassenger;
+import com.unittest.codecoverage.models.StreetDirectionFlow;
 import com.unittest.codecoverage.models.Traffic;
 import com.unittest.codecoverage.models.TrafficLigth;
 import com.unittest.codecoverage.services.TrafficBehaviorService;
@@ -23,7 +24,17 @@ public class TrafficBehaviorServiceImpl implements TrafficBehaviorService {
 				!currentFootpassengerBehavior.lookedToTheRight()) {
 			throw new BehaviorException("You should be more careful");
 		}
-		
+
+		if(TrafficLigth.YELLOW.equals(currentFootpassengerBehavior.getCrossedTrafficLigth()) &&
+				TrafficLigth.YELLOW.equals(currentTrafic.getCurrentTrafficLight()) &&
+				currentTrafic.getMaxSpeedAllowed() > 100 &&
+				currentTrafic.getMinSpeedAllowed() > 60 &&
+				currentTrafic.getStreetDirectionFlow() == StreetDirectionFlow.TWO_WAY &&
+				currentTrafic.intenseCarTraffic() &&
+				currentFootpassengerBehavior.crossedTheCrosswalk()) {
+			throw new BehaviorException("Hey! that's like committing suicide");
+		}
+
 	}
 
 }

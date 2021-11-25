@@ -1,6 +1,8 @@
 package com.unittest.codecoverage.service;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.InstanceOfAssertFactories.predicate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -37,13 +39,15 @@ public class PersonServiceTest {
 		
 		when(repository.insert(any(Person.class))).thenReturn(person);
 		
-		service.insert(person);
+		Person person2 = service.insert(person);
+
+		assertEquals(person, person2);
 	}
 	
 	@Test
 	public void testInsert_shouldThrowPersonExceptionWhenPersonIsNull() {
 		
-		List<String> expectedErrors = Lists.newArrayList("Name is required", "Gender is required");
+		List<String> expectedErrors = Lists.newArrayList("Name is required", "Gender is required", "Age should be zero or greater");
 		String expectedMessage = String.join(";", expectedErrors);
 		Person person = null;
 		
@@ -75,7 +79,7 @@ public class PersonServiceTest {
 		Person person = new Person();
 		person.setGender(Gender.M);
 		person.setName(" ");
-		
+
 		assertThatThrownBy(() -> service.insert(person))
 			.isInstanceOf(PersonException.class)
 			.hasFieldOrPropertyWithValue("errors", expectedErrors)
@@ -95,6 +99,22 @@ public class PersonServiceTest {
 			.isInstanceOf(PersonException.class)
 			.hasFieldOrPropertyWithValue("errors", expectedErrors)
 			.hasMessage(expectedMessage);
+	}
+
+	@Test
+	public void testInsert_shouldThrowPersonExceptionWhenMaleAgeIsLessThanZero() {
+
+		List<String> expectedErrors = Lists.newArrayList("Age should be zero or greater");
+		String expectedMessage = String.join(";", expectedErrors);
+		Person person = new Person();
+		person.setName("Name");
+		person.setGender(Gender.M);
+		person.setAge(-1);
+
+		assertThatThrownBy(() -> service.insert(person))
+				.isInstanceOf(PersonException.class)
+				.hasFieldOrPropertyWithValue("errors", expectedErrors)
+				.hasMessage(expectedMessage);
 	}
 
 }

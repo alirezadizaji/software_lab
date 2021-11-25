@@ -20,17 +20,29 @@ public class PersonValidator {
 		return person != null && person.getGender() != null;
 	}
 
+	public boolean ageShouldBeEqualOrGreaterThanZero(Person person) {
+		return person != null && person.getAge() >= 0;
+	}
+
 	public void validate(Person person) {
 		List<String> errors = new ArrayList<>();
 		if(!requiredName(person)) {
 			errors.add("Name is required");
 		}
-		
+
 		if(!requiredGender(person)) {
 			errors.add("Gender is required");
 		}
-		
-		if (!errors.isEmpty()) {
+
+		if(!ageShouldBeEqualOrGreaterThanZero(person)) {
+			errors.add("Age should be zero or greater");
+		}
+
+		if (errors.size() == 1) {
+			throw new PersonException(errors.get(0));
+		}
+
+		if (!errors.isEmpty() && errors.size() > 2) {
 			throw new PersonException(errors);
 		}
 	}
