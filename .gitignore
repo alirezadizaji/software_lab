@@ -133,3 +133,5 @@ dmypy.json
 
 .idea/
 out/
+
+R6/json-simple
