@@ -1,7 +1,7 @@
 package parser;
 
 
-public enum NonTerminal {
+public enum nonTerminal {
     Goal("$"),
     save("$|public|class|{|if|while|System.out.println|}|return|ID|=|else"),
     Source("$"),
@@ -45,7 +45,7 @@ public enum NonTerminal {
 
     public final String pattern;
 
-    NonTerminal(String pattern) {
+    nonTerminal(String pattern) {
         this.pattern = pattern;
     }
 }

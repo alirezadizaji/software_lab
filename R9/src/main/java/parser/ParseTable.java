@@ -1,7 +1,6 @@
 package parser;
 
 import scanner.token.Token;
-import scanner.type.Type;
 
 import java.util.*;
 
@@ -10,19 +9,19 @@ import java.util.*;
  */
 public class ParseTable {
     private ArrayList<Map<Token,Action>> actionTable;
-    private ArrayList<Map<NonTerminal,Integer>> gotoTable;
+    private ArrayList<Map<nonTerminal,Integer>> gotoTable;
     public ParseTable(String jsonTable) throws Exception {
         jsonTable = jsonTable.substring(2,jsonTable.length()-2);
         String[] Rows = jsonTable.split("\\],\\[");
         Map<Integer, Token> terminals = new HashMap<Integer, Token>();
-        Map<Integer,NonTerminal> nonTerminals = new HashMap<Integer, NonTerminal>();
+        Map<Integer, nonTerminal> nonTerminals = new HashMap<Integer, nonTerminal>();
         Rows[0] = Rows[0].substring(1,Rows[0].length()-1);
         String[] cols = Rows[0].split("\",\"");
         for (int i = 1; i < cols.length; i++) {
             if(cols[i].startsWith("Goto")){
                 String temp = cols[i].substring(5);
                 try {
-                    nonTerminals.put(i, NonTerminal.valueOf(temp));
+                    nonTerminals.put(i, nonTerminal.valueOf(temp));
                 }catch (Exception e){
                     temp = temp;
                 }
@@ -32,7 +31,7 @@ public class ParseTable {
             }
         }
         actionTable = new ArrayList<Map<Token, Action>>();
-        gotoTable = new ArrayList<Map<NonTerminal, Integer>>();
+        gotoTable = new ArrayList<Map<nonTerminal, Integer>>();
         for (int i = 1; i <Rows.length ; i++) {
             if(i == 100)
             {
@@ -70,7 +69,7 @@ public class ParseTable {
         }
     }
 
-    public int getGotoTable(int currentState, NonTerminal variable )
+    public int getGotoTable(int currentState, nonTerminal variable )
     {
 //        try {
         return gotoTable.get(currentState).get(variable);

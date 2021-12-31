@@ -1,10 +1,7 @@
 package parser;
 
-import Log.Log;
 import scanner.token.Token;
-import scanner.type.Type;
 
-import java.lang.management.GarbageCollectorMXBean;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +22,7 @@ public class Rule {
         }
         String[] splited = stringRule.split("->");
 //        try {
-        LHS = NonTerminal.valueOf(splited[0]);
+        LHS = nonTerminal.valueOf(splited[0]);
 //        }catch (Exception e){
 //            e.printStackTrace();
 //        }
@@ -34,7 +31,7 @@ public class Rule {
             String[] RHSs = splited[1].split(" ");
             for (String s : RHSs){
                 try {
-                    RHS.add(new GrammarSymbol(NonTerminal.valueOf(s)));
+                    RHS.add(new GrammarSymbol(nonTerminal.valueOf(s)));
                 } catch (Exception e) {
 //                    try{
                     RHS.add(new GrammarSymbol(new Token(Token.getTyepFormString(s), s)));
@@ -46,16 +43,16 @@ public class Rule {
             }
         }
     }
-    public NonTerminal LHS;
+    public nonTerminal LHS;
     public ArrayList<GrammarSymbol> RHS;
     public int semanticAction;
 }
 
 class GrammarSymbol{
     public boolean isTerminal;
-    public NonTerminal nonTerminal;
+    public parser.nonTerminal nonTerminal;
     public Token terminal;
-    public GrammarSymbol(NonTerminal nonTerminal)
+    public GrammarSymbol(parser.nonTerminal nonTerminal)
     {
         this.nonTerminal = nonTerminal;
         isTerminal = false;
