@@ -4,11 +4,20 @@ package codeGenerator;
  * Created by mohammad hosein on 6/28/2015.
  */
 public class Address {
-    public int num;
-    public TypeAddress Type;
-    public varType varType;
+    private final int num;
 
-    public Address(int num,varType varType, TypeAddress Type) {
+    public int getNum() {
+        return num;
+    }
+
+    private final TypeAddress Type;
+    private final varType varType;
+
+    public codeGenerator.varType getVarType() {
+        return varType;
+    }
+
+    public Address(int num, varType varType, TypeAddress Type) {
         this.num = num;
         this.Type = Type;
         this.varType = varType;
