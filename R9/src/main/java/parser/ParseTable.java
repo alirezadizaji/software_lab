@@ -12,7 +12,7 @@ public class ParseTable {
     private final ArrayList<Map<nonTerminal,Integer>> gotoTable;
     public ParseTable(String jsonTable) throws Exception {
         jsonTable = jsonTable.substring(2,jsonTable.length()-2);
-        String[] Rows = jsonTable.split("\\],\\[");
+        String[] Rows = jsonTable.split("],\\[");
         Map<Integer, Token> terminals = new HashMap<>();
         Map<Integer, nonTerminal> nonTerminals = new HashMap<>();
         Rows[0] = Rows[0].substring(1,Rows[0].length()-1);
@@ -27,7 +27,7 @@ public class ParseTable {
                 }
             }
             else {
-                terminals.put(i, new Token(Token.getTyepFormString(cols[i]), cols[i]));
+                terminals.put(i, new Token(Token.getTypeFormString(cols[i]), cols[i]));
             }
         }
         actionTable = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ParseTable {
             }
             Rows[i] = Rows[i].substring(1,Rows[i].length()-1);
             cols = Rows[i].split("\",\"");
-            actionTable.add(new HashMap<Token, Action>());
+            actionTable.add(new HashMap<>());
             gotoTable.add(new HashMap<>());
             for (int j = 1; j <cols.length ; j++) {
                 if(!cols[j].equals(""))

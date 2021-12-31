@@ -9,24 +9,22 @@ public class Memory {
     private final ArrayList<My3AddressCode> codeBlock;
     private int lastTempIndex;
     private int lastDataAddress;
-    private final int strAtTempMemoryAddress = 500;
-    private final int strAtDataMemoryAddress = 200;
-    private final int dataSize = 4;
-    private final int tempSize = 4;
 
     public Memory() {
         codeBlock = new ArrayList<>();
-        lastTempIndex = strAtTempMemoryAddress;
-        lastDataAddress = strAtDataMemoryAddress;
+        lastTempIndex = 500;
+        lastDataAddress = 200;
     }
 
     public int getTemp() {
+        int tempSize = 4;
         lastTempIndex += tempSize;
         return lastTempIndex - tempSize;
     }
     public  int getDateAddress(){
+        int dataSize = 4;
         lastDataAddress += dataSize;
-        return lastDataAddress-dataSize;
+        return lastDataAddress- dataSize;
     }
     public int saveMemory() {
         codeBlock.add(new My3AddressCode());

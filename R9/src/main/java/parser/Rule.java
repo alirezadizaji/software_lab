@@ -29,7 +29,7 @@ public class Rule {
                 try {
                     RHS.add(new GrammarSymbol(nonTerminal.valueOf(s)));
                 } catch (Exception e) {
-                    RHS.add(new GrammarSymbol(new Token(Token.getTyepFormString(s), s)));
+                    RHS.add(new GrammarSymbol(new Token(Token.getTypeFormString(s), s)));
                 }
             }
         }

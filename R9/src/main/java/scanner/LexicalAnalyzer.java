@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class LexicalAnalyzer {
 
-    private Matcher matcher;
+    private final Matcher matcher;
 
 
     public LexicalAnalyzer(java.util.Scanner sc) {
