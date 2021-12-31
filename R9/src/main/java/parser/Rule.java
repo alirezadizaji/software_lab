@@ -20,15 +20,15 @@ public class Rule {
         } else {
             semanticAction = 0;
         }
-        String[] splited = stringRule.split("->");
+        String[] split = stringRule.split("->");
 //        try {
-        LHS = nonTerminal.valueOf(splited[0]);
+        LHS = nonTerminal.valueOf(split[0]);
 //        }catch (Exception e){
 //            e.printStackTrace();
 //        }
         RHS = new ArrayList<GrammarSymbol>();
-        if (splited.length > 1) {
-            String[] RHSs = splited[1].split(" ");
+        if (split.length > 1) {
+            String[] RHSs = split[1].split(" ");
             for (String s : RHSs){
                 try {
                     RHS.add(new GrammarSymbol(nonTerminal.valueOf(s)));
