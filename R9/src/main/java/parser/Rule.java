@@ -22,7 +22,7 @@ public class Rule {
         }
         String[] split = stringRule.split("->");
         LHS = nonTerminal.valueOf(split[0]);
-        RHS = new ArrayList<GrammarSymbol>();
+        RHS = new ArrayList<>();
         if (split.length > 1) {
             String[] RHSs = split[1].split(" ");
             for (String s : RHSs){

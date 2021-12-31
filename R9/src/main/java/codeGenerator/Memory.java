@@ -15,7 +15,7 @@ public class Memory {
     private final int tempSize = 4;
 
     public Memory() {
-        codeBlock = new ArrayList<My3AddressCode>();
+        codeBlock = new ArrayList<>();
         lastTempIndex = strAtTempMemoryAddress;
         lastDataAddress = strAtDataMemoryAddress;
     }
