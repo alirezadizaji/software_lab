@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by mohammad hosein on 6/27/2015.
  */
 public class Memory {
-    private ArrayList<My3AddressCode> codeBlock;
+    private final ArrayList<My3AddressCode> codeBlock;
     private int lastTempIndex;
     private int lastDataAddress;
     private final int strAtTempMemoryAddress = 500;
