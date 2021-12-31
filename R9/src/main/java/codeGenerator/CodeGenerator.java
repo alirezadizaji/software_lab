@@ -157,15 +157,7 @@ public class CodeGenerator {
             try {
 
                 Symbol s = symbolTable.get(className, methodName, next.value);
-                varType t = varType.Int;
-                switch (s.type) {
-                    case Bool:
-                        t = varType.Bool;
-                        break;
-                    case Int:
-                        break;
-                }
-                ss.push(new Address(s.address, t));
+                decideType(s);
 
 
             } catch (Exception e) {
@@ -179,11 +171,7 @@ public class CodeGenerator {
         symbolStack.push(next.value);
     }
 
-    public void fpid() {
-        ss.pop();
-        ss.pop();
-
-        Symbol s = symbolTable.get(symbolStack.pop(), symbolStack.pop());
+    private void decideType(Symbol s) {
         varType t = varType.Int;
         switch (s.type) {
             case Bool:
@@ -193,6 +181,14 @@ public class CodeGenerator {
                 break;
         }
         ss.push(new Address(s.address, t));
+    }
+
+    public void fpid() {
+        ss.pop();
+        ss.pop();
+
+        Symbol s = symbolTable.get(symbolStack.pop(), symbolStack.pop());
+        decideType(s);
 
     }
 
