@@ -147,9 +147,7 @@ public class CodeGenerator {
 
     public void checkID() {
         symbolStack.pop();
-        if (ss.peek().varType == varType.Non) {
-            //TODO : error
-        }
+        ss.peek();//TODO : error
     }
 
     public void pid(Token next) {
@@ -165,7 +163,6 @@ public class CodeGenerator {
                         t = varType.Bool;
                         break;
                     case Int:
-                        t = varType.Int;
                         break;
                 }
                 ss.push(new Address(s.address, t));
@@ -193,7 +190,6 @@ public class CodeGenerator {
                 t = varType.Bool;
                 break;
             case Int:
-                t = varType.Int;
                 break;
         }
         ss.push(new Address(s.address, t));
@@ -232,7 +228,6 @@ public class CodeGenerator {
         switch (symbolTable.getMethodReturnType(className, methodName))
         {
             case Int:
-                t = varType.Int;
                 break;
             case Bool:
                 t = varType.Bool;
@@ -260,7 +255,6 @@ public class CodeGenerator {
                     t = varType.Bool;
                     break;
                 case Int:
-                    t = varType.Int;
                     break;
             }
             Address param = ss.pop();
