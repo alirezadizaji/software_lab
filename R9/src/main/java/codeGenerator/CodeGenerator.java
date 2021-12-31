@@ -28,7 +28,7 @@ public class CodeGenerator {
         memory.pintCodeBlock();
     }
     public void semanticFunction(int func, Token next) {
-        Log.print("codegenerator : " + func);
+        Log.print("codeGenerator : " + func);
         switch (func) {
             case 0:
                 return;
