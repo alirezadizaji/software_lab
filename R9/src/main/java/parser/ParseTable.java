@@ -54,7 +54,7 @@ public class ParseTable {
 //                        try {
                         Token t = terminals.get(j);
                         Action a = new Action(cols[j].charAt(0) == 'r' ? act.reduce : act.shift, Integer.parseInt(cols[j].substring(1)));
-                            actionTable.get(actionTable.size() - 1).put(t, a);
+                        actionTable.get(actionTable.size() - 1).put(t, a);
 //                        }catch (StringIndexOutOfBoundsException e){
 //                            e.printStackTrace();
 //                        }
@@ -73,7 +73,7 @@ public class ParseTable {
     public int getGotoTable(int currentState, NonTerminal variable )
     {
 //        try {
-            return gotoTable.get(currentState).get(variable);
+        return gotoTable.get(currentState).get(variable);
 //        }catch (NullPointerException dd)
 //        {
 //            dd.printStackTrace();

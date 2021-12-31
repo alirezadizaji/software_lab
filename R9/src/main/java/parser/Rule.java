@@ -15,7 +15,7 @@ public class Rule {
         int index = stringRule.indexOf("#");
         if (index != -1) {
             try {
-            semanticAction = Integer.parseInt(stringRule.substring(index + 1));
+                semanticAction = Integer.parseInt(stringRule.substring(index + 1));
             }catch (NumberFormatException ex){
                 semanticAction = 0;
             }
@@ -25,7 +25,7 @@ public class Rule {
         }
         String[] splited = stringRule.split("->");
 //        try {
-            LHS = NonTerminal.valueOf(splited[0]);
+        LHS = NonTerminal.valueOf(splited[0]);
 //        }catch (Exception e){
 //            e.printStackTrace();
 //        }
@@ -37,7 +37,7 @@ public class Rule {
                     RHS.add(new GrammarSymbol(NonTerminal.valueOf(s)));
                 } catch (Exception e) {
 //                    try{
-                        RHS.add(new GrammarSymbol(new Token(Token.getTyepFormString(s), s)));
+                    RHS.add(new GrammarSymbol(new Token(Token.getTyepFormString(s), s)));
 //                    }catch (IllegalArgumentException d){
 //                        d.printStackTrace();
 //                        Log.print(s);
